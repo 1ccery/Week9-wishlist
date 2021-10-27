@@ -1,0 +1,29 @@
+string rootdirectory = @"C:\Users\opilane\samples";
+            Console.WriteLine("Enter your file name : ");
+            string filename = Console.ReadLine();
+            string fullfilepath = $@"{rootdirectory}\{filename}.txt";
+            bool directoryExsists = Directory.Exists(rootdirectory);
+            Console.WriteLine(fullfilepath);
+            bool FileExsists = File.Exists(fullfilepath);
+            if(directoryExsists && FileExsists)
+            {
+                
+                 
+                Console.WriteLine($"File {filename} Already exists in {rootdirectory}");
+            }
+            else if (!directoryExsists)
+            {
+
+                Console.WriteLine($"Wishlist directory does not exist");
+                Directory.CreateDirectory(rootdirectory);
+                File.Create(fullfilepath);
+                Console.WriteLine($" File {filename}.txt has been created");
+           
+            }
+            else
+            {
+
+                File.Create(fullfilepath);
+                Console.WriteLine($"File {filename}.txt has been created ");
+            }
+            
